@@ -5,6 +5,8 @@
 # node config
 config.json
 
+#env file
+.env
 
 ### Node ###
 # Logs
