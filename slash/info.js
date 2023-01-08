@@ -1,5 +1,4 @@
-const { SlashCommandBuilder } = require("@discordjs/builders")
-const { MessageEmbed } = require("discord.js")
+const { SlashCommandBuilder, EmbedBuilder } = require("@discordjs/builders")
 
 module.exports = {
 	data: new SlashCommandBuilder().setName("info").setDescription("Displays info about the currently playing song"),
@@ -13,13 +12,23 @@ module.exports = {
 			length: 19,
 		})
 
-        const song = queue.current
+		let url = interaction.options.getString("url")
+
+		const result = await client.player.search(url, {
+			requestedBy: interaction.user,
+			searchEngine: QueryType.YOUTUBE_VIDEO
+		})
+		const song = queue.current 
 
 		await interaction.editReply({
-			embeds: [new MessageEmbed()
-            .setThumbnail(song.thumbnail)
-            .setDescription(`Currently Playing [${song.title}](${song.url})\n\n` + bar)
-        ],
+			embeds: [new EmbedBuilder()
+			.setThumbnail(song.thumbnail)
+			.setDescription(`Youre listening to [${song.title}](${song.url})\n\n`+ bar)
+			],
+			
 		})
 	},
+
 }
+
+

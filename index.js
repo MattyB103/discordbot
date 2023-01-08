@@ -1,22 +1,26 @@
-const Discord = require("discord.js")
-const dotenv = require("dotenv")
-const { REST } = require("@discordjs/rest")
-const { Routes } = require("discord-api-types/v9")
-const fs = require("fs")
-const { Player } = require("discord-player")
-
-dotenv.config()
+const Discord = require("discord.js");
+require("dotenv").config();
+const { REST } = require("@discordjs/rest");
+const { Routes } = require("discord-api-types/v9");
+const fs = require("fs");
+const { Player } = require("discord-player");
+const { Client } = require('discord.js');
+const { ApplicationCommandOptionType } = require("discord.js");
 const TOKEN = process.env.TOKEN
 
 const LOAD_SLASH = process.argv[2] == "load"
 
-const CLIENT_ID = "924846888929337354"
-const GUILD_ID = "924832445050781766"
+const CLIENT_ID = "1060740569061666836"
+//jaraxx
+const GUILD_ID = "585669193593126912"
+
+//mine
+//const GUILD_ID = "794764446429478913"
 
 const client = new Discord.Client({
     intents: [
-        "GUILDS",
-        "GUILD_VOICE_STATES"
+        "Guilds",
+        "GuildVoiceStates"
     ]
 })
 
