@@ -7,12 +7,13 @@ const { Player } = require("discord-player");
 const { Client } = require('discord.js');
 const { ApplicationCommandOptionType } = require("discord.js");
 const TOKEN = process.env.TOKEN
+//const TOKEN = process.env['TOKEN']
 
 const LOAD_SLASH = process.argv[2] == "load"
 
 const CLIENT_ID = "1060740569061666836"
 //jaraxx
-const GUILD_ID = "585669193593126912"
+//const GUILD_ID = "585669193593126912"
 
 //mine
 //const GUILD_ID = "794764446429478913"
@@ -44,7 +45,7 @@ for (const file of slashFiles){
 if (LOAD_SLASH) {
     const rest = new REST({ version: "9" }).setToken(TOKEN)
     console.log("Deploying slash commands")
-    rest.put(Routes.applicationGuildCommands(CLIENT_ID, GUILD_ID), {body: commands})
+    rest.put(Routes.applicationCommands(CLIENT_ID), {body: commands})
     .then(() => {
         console.log("Successfully loaded")
         process.exit(0)
